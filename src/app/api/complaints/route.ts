@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
       priority,
       status: 'Pending',
       dateSubmitted: new Date(),
-      userId: user._id,
+      userId: (user as any).id || user._id,
     });
 
     await complaint.save();

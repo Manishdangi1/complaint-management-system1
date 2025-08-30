@@ -76,62 +76,109 @@ export default function ComplaintTable({
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       {/* Filters */}
-      <div className="p-4 border-b border-gray-200">
-        <div className="flex flex-wrap gap-4 items-center">
-          <div>
-            <label htmlFor="status-filter" className="block text-sm font-medium text-gray-700 mb-1">Status</label>
-            <select
-              id="status-filter"
-              value={filters.status}
-              onChange={(e) => handleFilterChange('status', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="">All Statuses</option>
-              <option value="Pending">Pending</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Resolved">Resolved</option>
-            </select>
-          </div>
-
-          <div>
-            <label htmlFor="priority-filter" className="block text-sm font-medium text-gray-700 mb-1">Priority</label>
-            <select
-              id="priority-filter"
-              value={filters.priority}
-              onChange={(e) => handleFilterChange('priority', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="">All Priorities</option>
-              <option value="Low">Low</option>
-              <option value="Medium">Medium</option>
-              <option value="High">High</option>
-            </select>
-          </div>
-
-          <div>
-            <label htmlFor="category-filter" className="block text-sm font-medium text-gray-700 mb-1">Category</label>
-            <select
-              id="category-filter"
-              value={filters.category}
-              onChange={(e) => handleFilterChange('category', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="">All Categories</option>
-              <option value="Product">Product</option>
-              <option value="Service">Service</option>
-              <option value="Support">Support</option>
-              <option value="Technical">Technical</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-
-          <button
-            onClick={clearFilters}
-            className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 underline"
-          >
-            Clear Filters
-          </button>
+      <div className="p-6 border-b border-gray-200 bg-gray-50">
+        <div className="mb-4">
+          <h3 className="text-lg font-semibold text-gray-900 mb-3">Filter Complaints</h3>
         </div>
+                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+           <div>
+             <label htmlFor="status-filter" className="block text-base font-bold text-gray-800 mb-2">Status</label>
+             <select
+               id="status-filter"
+               value={filters.status}
+               onChange={(e) => handleFilterChange('status', e.target.value)}
+               className="w-full px-3 py-2 border-2 border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white shadow-sm font-semibold"
+             >
+               <option value="" className="font-semibold">All Statuses</option>
+               <option value="Pending" className="font-semibold">Pending</option>
+               <option value="In Progress" className="font-semibold">In Progress</option>
+               <option value="Resolved" className="font-semibold">Resolved</option>
+             </select>
+           </div>
+
+           <div>
+             <label htmlFor="priority-filter" className="block text-base font-bold text-gray-800 mb-2">Priority</label>
+             <select
+               id="priority-filter"
+               value={filters.priority}
+               onChange={(e) => handleFilterChange('priority', e.target.value)}
+               className="w-full px-3 py-2 border-2 border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white shadow-sm font-semibold"
+             >
+               <option value="" className="font-semibold">All Priorities</option>
+               <option value="Low" className="font-semibold">Low</option>
+               <option value="Medium" className="font-semibold">Medium</option>
+               <option value="High" className="font-semibold">High</option>
+             </select>
+           </div>
+
+           <div>
+             <label htmlFor="category-filter" className="block text-base font-bold text-gray-800 mb-2">Category</label>
+             <select
+               id="category-filter"
+               value={filters.category}
+               onChange={(e) => handleFilterChange('category', e.target.value)}
+               className="w-full px-3 py-2 border-2 border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white shadow-sm font-semibold"
+             >
+               <option value="" className="font-semibold">All Categories</option>
+               <option value="Product" className="font-semibold">Product</option>
+               <option value="Service" className="font-semibold">Service</option>
+               <option value="Support" className="font-semibold">Support</option>
+               <option value="Technical" className="font-semibold">Technical</option>
+               <option value="Other" className="font-semibold">Other</option>
+             </select>
+           </div>
+
+          <div className="flex gap-2">
+            <button
+              onClick={clearFilters}
+              className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm transition-colors"
+            >
+              Clear Filters
+            </button>
+          </div>
+        </div>
+        
+        {/* Active Filters Display */}
+        {(filters.status || filters.priority || filters.category) && (
+          <div className="mt-4 pt-4 border-t border-gray-200">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-sm font-medium text-gray-700">Active Filters:</span>
+              {filters.status && (
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                  Status: {filters.status}
+                  <button
+                    onClick={() => handleFilterChange('status', '')}
+                    className="ml-1.5 text-blue-600 hover:text-blue-800"
+                  >
+                    ×
+                  </button>
+                </span>
+              )}
+              {filters.priority && (
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                  Priority: {filters.priority}
+                  <button
+                    onClick={() => handleFilterChange('priority', '')}
+                    className="ml-1.5 text-green-600 hover:text-green-800"
+                  >
+                    ×
+                  </button>
+                </span>
+              )}
+              {filters.category && (
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                  Category: {filters.category}
+                  <button
+                    onClick={() => handleFilterChange('category', '')}
+                    className="ml-1.5 text-purple-600 hover:text-purple-800"
+                  >
+                    ×
+                  </button>
+                </span>
+              )}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Table */}

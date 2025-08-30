@@ -89,11 +89,12 @@ export default function Home() {
       const data = await response.json();
 
       if (data.success) {
-        localStorage.setItem('token', data.data.token);
-        localStorage.setItem('user', JSON.stringify(data.data.user));
-        setUser(data.data.user);
-        setIsAuthenticated(true);
-        fetchUserComplaints();
+        
+        setError('');
+        alert('Registration successful! Please login with your credentials.');
+        setShowLogin(true);
+        // Clear the form by resetting to login view
+        setIsLoading(false);
       } else {
         setError(data.error || 'Registration failed');
       }

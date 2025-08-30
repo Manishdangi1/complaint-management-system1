@@ -310,11 +310,9 @@ For support and questions:
 - Check the documentation
 - Review the code examples
 
-## 📸 Screenshots
 
-*Screenshots will be added here showing the admin dashboard, user interface, and complaint management features*
 
-## 🔗 Links
+##  Links
 
 - **Live Demo:** [https://complaint-management-system.vercel.app](https://complaint-management-system.vercel.app)
 - **GitHub Repository:** [https://github.com/Manishdangi1/complaint-management-system1](https://github.com/Manishdangi1/complaint-management-system1)

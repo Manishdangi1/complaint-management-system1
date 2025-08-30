@@ -10,13 +10,13 @@ A full-stack web application built with Next.js, TypeScript, MongoDB, and Nodema
 
 ## Features
 
-### 🔐 Authentication System
+### Authentication System
 - JWT-based user authentication
 - User registration and login
 - Role-based access control (User/Admin)
 - Secure password hashing with bcrypt
 
-### 📝 Complaint Management
+###  Complaint Management
 - **User Interface:**
   - Submit complaints with title, description, category, and priority
   - View personal complaint history
@@ -29,13 +29,13 @@ A full-stack web application built with Next.js, TypeScript, MongoDB, and Nodema
   - Filter complaints by status, priority, and category
   - Modern, responsive dashboard with enhanced UI
 
-### 📧 Email Notifications
+###  Email Notifications
 - Automatic email notifications for new complaints
 - Status update confirmations
 - Welcome emails for new users
 - Configurable SMTP settings
 
-### 🎨 Modern UI/UX
+###  Modern UI/UX
 - Responsive design for mobile and desktop
 - Clean, intuitive interface with Tailwind CSS
 - Real-time status updates
@@ -121,9 +121,9 @@ npm run build
 npm start
 ```
 
-## 🚀 Deployment
+## Deployment
 
-### Vercel Deployment (Recommended)
+### Vercel Deployment 
 
 This application is optimized for Vercel deployment. Follow these steps:
 
@@ -147,12 +147,9 @@ This application is optimized for Vercel deployment. Follow these steps:
    ```
 6. **Click "Deploy"** - Vercel will build and deploy automatically
 
-### Other Deployment Options
-- **Heroku:** Add MongoDB addon and set environment variables
-- **AWS:** Use Elastic Beanstalk or EC2 with MongoDB Atlas
-- **Docker:** Build and run with Docker Compose
 
-## 👑 Admin Access
+
+##  Admin Access
 
 ### Option 1: Use Pre-seeded Admin Account
 The application comes with a pre-configured admin account:

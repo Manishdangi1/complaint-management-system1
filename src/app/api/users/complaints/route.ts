@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     await connectDB();
 
     // Get complaints for the authenticated user
-    const complaints = await Complaint.find({ userId: user._id })
+    const complaints = await Complaint.find({ userId: (user as any).id || user._id })
       .sort({ dateSubmitted: -1 });
 
     const response: ApiResponse<ComplaintType[]> = {

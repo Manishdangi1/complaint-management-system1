@@ -74,21 +74,22 @@ export default function ComplaintTable({
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      {/* Filters */}
-      <div className="p-6 border-b border-gray-200 bg-gray-50">
-        <div className="mb-4">
-          <h3 className="text-lg font-semibold text-gray-900 mb-3">Filter Complaints</h3>
-        </div>
+         <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+       {/* Filters */}
+       <div className="p-8 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+         <div className="mb-6">
+           <h3 className="text-xl font-bold text-gray-900 mb-2">Filter Complaints</h3>
+           <p className="text-gray-600">Refine your search to find specific complaints</p>
+         </div>
                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
            <div>
              <label htmlFor="status-filter" className="block text-base font-bold text-gray-800 mb-2">Status</label>
-             <select
-               id="status-filter"
-               value={filters.status}
-               onChange={(e) => handleFilterChange('status', e.target.value)}
-               className="w-full px-3 py-2 border-2 border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white shadow-sm font-semibold"
-             >
+                            <select
+                 id="status-filter"
+                 value={filters.status}
+                 onChange={(e) => handleFilterChange('status', e.target.value)}
+                 className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 text-gray-900 bg-white shadow-md font-semibold transition-all duration-200 hover:border-gray-400"
+               >
                <option value="" className="font-semibold">All Statuses</option>
                <option value="Pending" className="font-semibold">Pending</option>
                <option value="In Progress" className="font-semibold">In Progress</option>
@@ -98,12 +99,12 @@ export default function ComplaintTable({
 
            <div>
              <label htmlFor="priority-filter" className="block text-base font-bold text-gray-800 mb-2">Priority</label>
-             <select
-               id="priority-filter"
-               value={filters.priority}
-               onChange={(e) => handleFilterChange('priority', e.target.value)}
-               className="w-full px-3 py-2 border-2 border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white shadow-sm font-semibold"
-             >
+                            <select
+                 id="priority-filter"
+                 value={filters.priority}
+                 onChange={(e) => handleFilterChange('priority', e.target.value)}
+                 className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 text-gray-900 bg-white shadow-md font-semibold transition-all duration-200 hover:border-gray-400"
+               >
                <option value="" className="font-semibold">All Priorities</option>
                <option value="Low" className="font-semibold">Low</option>
                <option value="Medium" className="font-semibold">Medium</option>
@@ -113,12 +114,12 @@ export default function ComplaintTable({
 
            <div>
              <label htmlFor="category-filter" className="block text-base font-bold text-gray-800 mb-2">Category</label>
-             <select
-               id="category-filter"
-               value={filters.category}
-               onChange={(e) => handleFilterChange('category', e.target.value)}
-               className="w-full px-3 py-2 border-2 border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white shadow-sm font-semibold"
-             >
+                            <select
+                 id="category-filter"
+                 value={filters.category}
+                 onChange={(e) => handleFilterChange('category', e.target.value)}
+                 className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-blue-100 focus:border-blue-500 text-gray-900 bg-white shadow-md font-semibold transition-all duration-200 hover:border-gray-400"
+               >
                <option value="" className="font-semibold">All Categories</option>
                <option value="Product" className="font-semibold">Product</option>
                <option value="Service" className="font-semibold">Service</option>
@@ -129,83 +130,83 @@ export default function ComplaintTable({
            </div>
 
           <div className="flex gap-2">
-            <button
-              onClick={clearFilters}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm transition-colors"
-            >
-              Clear Filters
-            </button>
+                         <button
+               onClick={clearFilters}
+               className="px-6 py-3 text-sm font-semibold text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 hover:border-gray-400 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 shadow-sm transition-all duration-200"
+             >
+               Clear Filters
+             </button>
           </div>
         </div>
         
-        {/* Active Filters Display */}
-        {(filters.status || filters.priority || filters.category) && (
-          <div className="mt-4 pt-4 border-t border-gray-200">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-sm font-medium text-gray-700">Active Filters:</span>
-              {filters.status && (
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                  Status: {filters.status}
-                  <button
-                    onClick={() => handleFilterChange('status', '')}
-                    className="ml-1.5 text-blue-600 hover:text-blue-800"
-                  >
-                    ×
-                  </button>
-                </span>
-              )}
-              {filters.priority && (
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                  Priority: {filters.priority}
-                  <button
-                    onClick={() => handleFilterChange('priority', '')}
-                    className="ml-1.5 text-green-600 hover:text-green-800"
-                  >
-                    ×
-                  </button>
-                </span>
-              )}
-              {filters.category && (
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                  Category: {filters.category}
-                  <button
-                    onClick={() => handleFilterChange('category', '')}
-                    className="ml-1.5 text-purple-600 hover:text-purple-800"
-                  >
-                    ×
-                  </button>
-                </span>
-              )}
-            </div>
-          </div>
-        )}
+                 {/* Active Filters Display */}
+         {(filters.status || filters.priority || filters.category) && (
+           <div className="mt-6 pt-6 border-t border-gray-200">
+             <div className="flex items-center gap-3 flex-wrap">
+               <span className="text-sm font-semibold text-gray-700">Active Filters:</span>
+               {filters.status && (
+                 <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-semibold bg-blue-100 text-blue-800 border border-blue-200 shadow-sm">
+                   Status: {filters.status}
+                   <button
+                     onClick={() => handleFilterChange('status', '')}
+                     className="ml-2 text-blue-600 hover:text-blue-800 hover:bg-blue-200 rounded-full w-5 h-5 flex items-center justify-center transition-colors"
+                   >
+                     ×
+                   </button>
+                 </span>
+               )}
+               {filters.priority && (
+                 <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-semibold bg-green-100 text-green-800 border border-green-200 shadow-sm">
+                   Priority: {filters.priority}
+                   <button
+                     onClick={() => handleFilterChange('priority', '')}
+                     className="ml-2 text-green-600 hover:text-green-800 hover:bg-green-200 rounded-full w-5 h-5 flex items-center justify-center transition-colors"
+                   >
+                     ×
+                   </button>
+                 </span>
+               )}
+               {filters.category && (
+                 <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-semibold bg-purple-100 text-purple-800 border border-purple-200 shadow-sm">
+                   Category: {filters.category}
+                   <button
+                     onClick={() => handleFilterChange('category', '')}
+                     className="ml-2 text-purple-600 hover:text-purple-800 hover:bg-purple-200 rounded-full w-5 h-5 flex items-center justify-center transition-colors"
+                   >
+                     ×
+                   </button>
+                 </span>
+               )}
+             </div>
+           </div>
+         )}
       </div>
 
       {/* Table */}
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Title
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Category
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Priority
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Status
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Date Submitted
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Actions
-              </th>
-            </tr>
-          </thead>
+                 <table className="min-w-full divide-y divide-gray-200">
+           <thead className="bg-gradient-to-r from-gray-50 to-gray-100">
+             <tr>
+               <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider border-b-2 border-gray-200">
+                 Title
+               </th>
+               <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider border-b-2 border-gray-200">
+                 Category
+               </th>
+               <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider border-b-2 border-gray-200">
+                 Priority
+               </th>
+               <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider border-b-2 border-gray-200">
+                 Status
+               </th>
+               <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider border-b-2 border-gray-200">
+                 Date Submitted
+               </th>
+               <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider border-b-2 border-gray-200">
+                 Actions
+               </th>
+             </tr>
+           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {filteredComplaints.length === 0 ? (
               <tr>
@@ -214,46 +215,46 @@ export default function ComplaintTable({
                 </td>
               </tr>
             ) : (
-              filteredComplaints.map((complaint) => (
-                <tr key={complaint._id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900 max-w-xs truncate" title={complaint.title}>
-                      {complaint.title}
-                    </div>
-                    <div className="text-sm text-gray-500 max-w-xs truncate" title={complaint.description}>
-                      {complaint.description}
-                    </div>
-                  </td>
+                             filteredComplaints.map((complaint) => (
+                 <tr key={complaint._id} className="hover:bg-blue-50 transition-colors duration-200 border-l-4 border-l-transparent hover:border-l-blue-500">
+                   <td className="px-6 py-5 whitespace-nowrap">
+                     <div className="text-sm font-semibold text-gray-900 max-w-xs truncate" title={complaint.title}>
+                       {complaint.title}
+                     </div>
+                     <div className="text-sm text-gray-600 max-w-xs truncate mt-1" title={complaint.description}>
+                       {complaint.description}
+                     </div>
+                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {complaint.category}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getPriorityColor(complaint.priority)}`}>
-                      {complaint.priority}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <select
-                      aria-label={`Update status for complaint: ${complaint.title}`}
-                      value={complaint.status}
-                      onChange={(e) => onStatusUpdate(complaint._id!, e.target.value as ComplaintStatus)}
-                      className={`px-2 py-1 text-xs font-semibold rounded-full border-0 focus:outline-none focus:ring-2 focus:ring-blue-500 ${getStatusColor(complaint.status)}`}
-                    >
-                      <option value="Pending">Pending</option>
-                      <option value="In Progress">In Progress</option>
-                      <option value="Resolved">Resolved</option>
-                    </select>
-                  </td>
+                                     <td className="px-6 py-4 whitespace-nowrap">
+                     <span className={`inline-flex px-3 py-2 text-xs font-bold rounded-full shadow-sm ${getPriorityColor(complaint.priority)}`}>
+                       {complaint.priority}
+                     </span>
+                   </td>
+                   <td className="px-6 py-4 whitespace-nowrap">
+                     <select
+                       aria-label={`Update status for complaint: ${complaint.title}`}
+                       value={complaint.status}
+                       onChange={(e) => onStatusUpdate(complaint._id!, e.target.value as ComplaintStatus)}
+                       className={`px-3 py-2 text-xs font-bold rounded-full border-0 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm transition-all duration-200 ${getStatusColor(complaint.status)}`}
+                     >
+                       <option value="Pending">Pending</option>
+                       <option value="In Progress">In Progress</option>
+                       <option value="Resolved">Resolved</option>
+                     </select>
+                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {new Date(complaint.dateSubmitted).toLocaleDateString()}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    <button
-                      onClick={() => onDelete(complaint._id!)}
-                      className="text-red-600 hover:text-red-900 px-2 py-1 rounded hover:bg-red-50"
-                    >
-                      Delete
-                    </button>
+                                         <button
+                       onClick={() => onDelete(complaint._id!)}
+                       className="text-red-600 hover:text-red-700 px-3 py-2 rounded-lg hover:bg-red-50 border border-red-200 hover:border-red-300 transition-all duration-200 font-medium"
+                     >
+                       Delete
+                     </button>
                   </td>
                 </tr>
               ))
@@ -262,12 +263,19 @@ export default function ComplaintTable({
         </table>
       </div>
 
-      {/* Summary */}
-      <div className="px-6 py-3 bg-gray-50 border-t border-gray-200">
-        <p className="text-sm text-gray-600">
-          Showing {filteredComplaints.length} of {complaints.length} complaints
-        </p>
-      </div>
+             {/* Summary */}
+       <div className="px-6 py-4 bg-gradient-to-r from-gray-50 to-gray-100 border-t border-gray-200">
+         <div className="flex items-center justify-between">
+           <p className="text-sm font-medium text-gray-700">
+             Showing <span className="font-bold text-blue-600">{filteredComplaints.length}</span> of <span className="font-bold text-gray-900">{complaints.length}</span> complaints
+           </p>
+           {filteredComplaints.length > 0 && (
+             <div className="text-xs text-gray-500 bg-white px-3 py-1 rounded-full border border-gray-200">
+               {Math.round((filteredComplaints.length / complaints.length) * 100)}% of total
+             </div>
+           )}
+         </div>
+       </div>
     </div>
   );
 }

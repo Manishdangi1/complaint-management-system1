@@ -2,6 +2,12 @@
 
 A full-stack web application built with Next.js, TypeScript, MongoDB, and Nodemailer that allows users to submit complaints and administrators to manage them efficiently.
 
+## 🌐 Live Demo
+
+**Live Application:** [https://complaint-management-system.vercel.app](https://complaint-management-system.vercel.app)
+
+**GitHub Repository:** [https://github.com/Manishdangi1/complaint-management-system1](https://github.com/Manishdangi1/complaint-management-system1)
+
 ## Features
 
 ### 🔐 Authentication System
@@ -21,6 +27,7 @@ A full-stack web application built with Next.js, TypeScript, MongoDB, and Nodema
   - Update complaint status (Pending, In Progress, Resolved)
   - Delete complaints
   - Filter complaints by status, priority, and category
+  - Modern, responsive dashboard with enhanced UI
 
 ### 📧 Email Notifications
 - Automatic email notifications for new complaints
@@ -30,9 +37,10 @@ A full-stack web application built with Next.js, TypeScript, MongoDB, and Nodema
 
 ### 🎨 Modern UI/UX
 - Responsive design for mobile and desktop
-- Clean, intuitive interface
+- Clean, intuitive interface with Tailwind CSS
 - Real-time status updates
 - Color-coded priority and status indicators
+- Enhanced admin dashboard with gradient backgrounds and smooth transitions
 
 ## Tech Stack
 
@@ -43,6 +51,7 @@ A full-stack web application built with Next.js, TypeScript, MongoDB, and Nodema
 - **Email:** Nodemailer
 - **Password Hashing:** bcryptjs
 - **Styling:** Tailwind CSS v4
+- **Deployment:** Vercel
 
 ## Prerequisites
 
@@ -56,8 +65,8 @@ Before running this application, make sure you have:
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
-   cd complaint-management-system
+   git clone https://github.com/Manishdangi1/complaint-management-system1.git
+   cd complaint-management-system1
    ```
 
 2. **Install dependencies**
@@ -112,25 +121,75 @@ npm run build
 npm start
 ```
 
+## 🚀 Deployment
+
+### Vercel Deployment (Recommended)
+
+This application is optimized for Vercel deployment. Follow these steps:
+
+1. **Push your code to GitHub** (already done)
+2. **Go to [vercel.com](https://vercel.com)** and sign up/login with GitHub
+3. **Click "New Project"** and import your repository
+4. **Configure project settings:**
+   - Framework Preset: Next.js (auto-detected)
+   - Root Directory: `./` (default)
+   - Build Command: `npm run build` (auto-detected)
+   - Output Directory: `.next` (auto-detected)
+5. **Add Environment Variables** in Vercel dashboard:
+   ```env
+   MONGODB_URI=mongodb+srv://your-username:your-password@cluster.mongodb.net/
+   JWT_SECRET=your-jwt-secret-key
+   SMTP_HOST=smtp.gmail.com
+   SMTP_PORT=587
+   SMTP_USER=your-email@gmail.com
+   SMTP_PASS=your-app-password
+   ADMIN_EMAIL=admin@example.com
+   ```
+6. **Click "Deploy"** - Vercel will build and deploy automatically
+
+### Other Deployment Options
+- **Heroku:** Add MongoDB addon and set environment variables
+- **AWS:** Use Elastic Beanstalk or EC2 with MongoDB Atlas
+- **Docker:** Build and run with Docker Compose
+
+## 👑 Admin Access
+
+### Option 1: Use Pre-seeded Admin Account
+The application comes with a pre-configured admin account:
+
+**Email:** `manishdangi272004@gmail.com`  
+**Password:** `Admin@2024#Secure`
+
+### Option 2: Create Your Own Admin Account
+1. **Register a new account** through the application
+2. **Run the seed script** to create an admin user:
+   ```bash
+   npm run seed-admin
+   ```
+3. **Or manually update** the user role in MongoDB:
+   ```javascript
+   db.users.updateOne(
+     { email: "your-email@example.com" },
+     { $set: { role: "admin" } }
+   )
+   ```
+
+### Admin Dashboard Features
+- **Comprehensive Complaint Table** with filtering and sorting
+- **Status Management** - Update complaint statuses
+- **Advanced Filtering** by status, priority, and category
+- **Bulk Operations** for efficient complaint management
+- **Real-time Updates** with smooth transitions
+- **Responsive Design** for all device sizes
+
 ## Usage
 
 ### First Time Setup
 
-1. **Register an Admin User**
-   - Start the application
-   - Register a new account
-   - Manually update the user role to 'admin' in MongoDB:
-     ```javascript
-     db.users.updateOne(
-       { email: "your-email@example.com" },
-       { $set: { role: "admin" } }
-     )
-     ```
-
-2. **Regular Users**
-   - Register new accounts (default role: 'user')
-   - Submit complaints
-   - Track complaint progress
+1. **Start the application** (`npm run dev`)
+2. **Login as admin** using the credentials above
+3. **Access admin dashboard** to manage complaints
+4. **Register regular users** or let them register themselves
 
 ### User Workflow
 
@@ -221,19 +280,7 @@ SMTP_PASS=your-password
 - Role-based access control
 - Input validation and sanitization
 - Secure HTTP headers
-
-## Deployment
-
-### Vercel (Recommended)
-1. Push code to GitHub
-2. Connect repository to Vercel
-3. Set environment variables in Vercel dashboard
-4. Deploy automatically
-
-### Other Platforms
-- **Heroku:** Add MongoDB addon and set environment variables
-- **AWS:** Use Elastic Beanstalk or EC2 with MongoDB Atlas
-- **Docker:** Build and run with Docker Compose
+- Environment variable protection
 
 ## Environment Variables Reference
 
@@ -266,14 +313,16 @@ For support and questions:
 - Check the documentation
 - Review the code examples
 
-## Screenshots
+## 📸 Screenshots
 
-*Add screenshots of your running application here*
+*Screenshots will be added here showing the admin dashboard, user interface, and complaint management features*
 
-## Live Demo
+## 🔗 Links
 
-*Add your deployed application URL here*
+- **Live Demo:** [https://complaint-management-system.vercel.app](https://complaint-management-system.vercel.app)
+- **GitHub Repository:** [https://github.com/Manishdangi1/complaint-management-system1](https://github.com/Manishdangi1/complaint-management-system1)
+- **Admin Access:** Use the pre-configured admin account or create your own
 
 ---
 
-**Note:** This is a production-ready application with proper security measures. Make sure to change default secrets and configure your environment properly before deploying to production.
+**Note:** This is a production-ready application with proper security measures. The application is currently deployed on Vercel and fully functional. Make sure to change default secrets and configure your environment properly before deploying to production.

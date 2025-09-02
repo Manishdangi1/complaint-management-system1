@@ -1,20 +1,30 @@
+require('dotenv').config({ path: '.env' });
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-// MongoDB connection string - update this with your connection string
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/complaint-management';
+// MongoDB connection string - use the one from .env.local
+const MONGODB_URI = process.env.MONGODB_URI;
 
 // Admin user data
 const adminUser = {
-  email: 'admin@example.com',
-  password: 'admin123456',
-  name: 'System Administrator',
+  email: 'manishdangi272004@gmail.com',
+  password: 'Admin@2024#Secure',
+  name: 'Manish Dangi',
   role: 'admin',
   createdAt: new Date()
 };
 
 async function seedAdmin() {
   try {
+    // Check if MongoDB URI is loaded
+    if (!MONGODB_URI) {
+      console.error('MONGODB_URI not found in environment variables');
+      console.error('Make sure you have a .env.local file with MONGODB_URI set');
+      return;
+    }
+    
+    console.log('Using MongoDB URI:', MONGODB_URI);
+    
     // Connect to MongoDB
     await mongoose.connect(MONGODB_URI);
     console.log('Connected to MongoDB');

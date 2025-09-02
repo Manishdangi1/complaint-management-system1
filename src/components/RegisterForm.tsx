@@ -80,7 +80,7 @@ export default function RegisterForm({ onRegister, isLoading = false, error }: R
             id="name"
             value={formData.name}
             onChange={(e) => handleChange('name', e.target.value)}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 ${
               errors.name ? 'border-red-500' : 'border-gray-300'
             }`}
             placeholder="Enter your full name"
@@ -100,7 +100,7 @@ export default function RegisterForm({ onRegister, isLoading = false, error }: R
             id="email"
             value={formData.email}
             onChange={(e) => handleChange('email', e.target.value)}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 ${
               errors.email ? 'border-red-500' : 'border-gray-300'
             }`}
             placeholder="Enter your email"
@@ -120,7 +120,7 @@ export default function RegisterForm({ onRegister, isLoading = false, error }: R
             id="password"
             value={formData.password}
             onChange={(e) => handleChange('password', e.target.value)}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 ${
               errors.password ? 'border-red-500' : 'border-gray-300'
             }`}
             placeholder="Enter your password"
@@ -140,7 +140,7 @@ export default function RegisterForm({ onRegister, isLoading = false, error }: R
             id="confirmPassword"
             value={formData.confirmPassword}
             onChange={(e) => handleChange('confirmPassword', e.target.value)}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 ${
               errors.confirmPassword ? 'border-red-500' : 'border-gray-300'
             }`}
             placeholder="Confirm your password"

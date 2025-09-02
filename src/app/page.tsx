@@ -89,11 +89,12 @@ export default function Home() {
       const data = await response.json();
 
       if (data.success) {
-        localStorage.setItem('token', data.data.token);
-        localStorage.setItem('user', JSON.stringify(data.data.user));
-        setUser(data.data.user);
-        setIsAuthenticated(true);
-        fetchUserComplaints();
+        
+        setError('');
+        alert('Registration successful! Please login with your credentials.');
+        setShowLogin(true);
+        // Clear the form by resetting to login view
+        setIsLoading(false);
       } else {
         setError(data.error || 'Registration failed');
       }
@@ -145,11 +146,14 @@ export default function Home() {
       });
 
       const data = await response.json();
+      console.log('User complaints response:', data); // Debug log
       if (data.success) {
         setComplaints(data.data);
+      } else {
+        console.error('Failed to fetch user complaints:', data.error);
       }
-    } catch {
-      console.error('Error fetching user complaints');
+    } catch (error) {
+      console.error('Error fetching user complaints:', error);
     }
   };
 
@@ -173,6 +177,7 @@ export default function Home() {
       });
 
       const data = await response.json();
+      console.log('Complaint submission response:', data); // Debug log
       if (data.success) {
         fetchUserComplaints();
         alert('Complaint submitted successfully!');
@@ -324,10 +329,24 @@ export default function Home() {
             </div>
 
             <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">My Complaints</h2>
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-semibold text-gray-900">My Complaints</h2>
+                <button
+                  onClick={fetchUserComplaints}
+                  className="px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 hover:border-blue-300 transition-colors"
+                >
+                  Refresh
+                </button>
+              </div>
               {complaints.length === 0 ? (
                 <div className="text-center py-8 text-gray-500">
                   <p>No complaints submitted yet.</p>
+                  <button
+                    onClick={fetchUserComplaints}
+                    className="mt-2 px-4 py-2 text-sm text-blue-600 underline hover:text-blue-800"
+                  >
+                    Click here to refresh
+                  </button>
                 </div>
               ) : (
                 <div className="bg-white rounded-lg shadow-md overflow-hidden">

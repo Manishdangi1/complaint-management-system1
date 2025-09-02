@@ -43,7 +43,7 @@ export default function LoginForm({ onLogin, isLoading = false, error }: LoginFo
             id="email"
             value={formData.email}
             onChange={(e) => handleChange('email', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500"
             placeholder="Enter your email"
             required
           />
@@ -58,7 +58,7 @@ export default function LoginForm({ onLogin, isLoading = false, error }: LoginFo
             id="password"
             value={formData.password}
             onChange={(e) => handleChange('password', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500"
             placeholder="Enter your password"
             required
           />

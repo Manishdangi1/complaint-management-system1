@@ -77,7 +77,7 @@ export default function ComplaintForm({ onSubmit, isLoading = false }: Complaint
             id="title"
             value={formData.title}
             onChange={(e) => handleChange('title', e.target.value)}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 ${
               errors.title ? 'border-red-500' : 'border-gray-300'
             }`}
             placeholder="Enter complaint title"
@@ -97,7 +97,7 @@ export default function ComplaintForm({ onSubmit, isLoading = false }: Complaint
             value={formData.description}
             onChange={(e) => handleChange('description', e.target.value)}
             rows={4}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500 ${
               errors.description ? 'border-red-500' : 'border-gray-300'
             }`}
             placeholder="Describe your complaint in detail"
@@ -119,7 +119,7 @@ export default function ComplaintForm({ onSubmit, isLoading = false }: Complaint
             id="category"
             value={formData.category}
             onChange={(e) => handleChange('category', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
           >
             <option value="Product">Product</option>
             <option value="Service">Service</option>
